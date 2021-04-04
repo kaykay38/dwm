@@ -46,6 +46,7 @@ Applied Patches
 - [dwm-fullgaps-6.2.diff](./patches/dwm-fullgaps-6.2.diff)
 - [dwm-gapgrid-6.2.diff](./patches/dwm-gapgrid-6.2.diff)
 - movestack
+- [dwm-pertag-20200914-61bb8b2.diff](./patches/dwm-pertag-20200914-61bb8b2.diff)
 - [dwm-resizecorners-6.2.diff](./patches/dwm-resizecorners-6.2.diff)
 - shiftview
 - [dwm-switchtotag-6.2.diff](./patches/dwm-switchtotag-6.2.diff)
