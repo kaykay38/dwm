@@ -58,9 +58,9 @@ In order to build dwm, you need the Xlib header files.
    You can change the default terminal command (termcmd) in the [config.def.h](./config.def.h).
 - **Fonts** - [Noto Sans Nerd Font Regular](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Regular%20Nerd%20Font%20Complete.ttf)
 - **Scripts**<br>
-    **Screenshots** - Use my [screenshot scripts](https://github.com/kaykay38/dotfiles/tree/master/.config/.system) from my [dotfiles](https://github.com/kaykay38/dotfiles) ([scrot](https://github.com/resurrecting-open-source-projects/scrot) and [xclip](https://github.com/astrand/xclip) are needed for scripts to work).
+    **Screenshots** - Use my [screenshot scripts](https://github.com/kaykay38/dotfiles/tree/main/.config/.system) from my [dotfiles](https://github.com/kaykay38/dotfiles) ([scrot](https://github.com/resurrecting-open-source-projects/scrot) and [xclip](https://github.com/astrand/xclip) are needed for scripts to work).
 
-    **Power Menu** - Use my [power menu script](https://github.com/kaykay38/dotfiles/tree/master/.config/.system/sysmenu) from my [dotfiles](https://github.com/kaykay38/dotfiles) ([rofi](https://github.com/davatorium/rofi) is needed for script to work).
+    **Power Menu** - Use my [power menu script](https://github.com/kaykay38/dotfiles/tree/main/.config/.system/sysmenu) from my [dotfiles](https://github.com/kaykay38/dotfiles) ([rofi](https://github.com/davatorium/rofi) is needed for script to work).
 
 Installation
 ------------
