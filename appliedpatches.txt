@@ -1,0 +1,12 @@
+dwm-actualfullscreen-20191112-cb3f58a.diff
+dwm-alpha-20201019-61bb8b2.diff
+dwm-alwayscenter-20200625-f04cac6.diff
+dwm-autoresize-6.1.diff
+dwm-center-6.2.diff
+dwm-fixborders-6.2.diff
+dwm-fullgaps-6.2.diff
+dwm-gapgrid-6.2.diff
+movestack
+dwm-resizecorners-6.2.diff
+shiftview
+dwm-switchtotag-6.2.diff
