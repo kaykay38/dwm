@@ -42,7 +42,9 @@ Applied Patches
 - [dwm-alwayscenter-20200625-f04cac6.diff](./patches/dwm-alwayscenter-20200625-f04cac6.diff)
 - [dwm-autoresize-6.1.diff](./patches/dwm-autoresize-6.1.diff)
 - [dwm-center-6.2.diff](./patches/dwm-center-6.2.diff)
+- [dwm-cyclelayouts-20180524-6.2.diff](./patches/dwm-cyclelayouts-20180524-6.2.diff)
 - [dwm-fixborders-6.2.diff](./patches/dwm-fixborders-6.2.diff)
+- [dwm-focusonnetactive-6.2.diff](./patches/dwm-focusonnetactive-6.2.diff)
 - [dwm-fullgaps-6.2.diff](./patches/dwm-fullgaps-6.2.diff)
 - [dwm-gapgrid-6.2.diff](./patches/dwm-gapgrid-6.2.diff)
 - movestack
@@ -50,6 +52,7 @@ Applied Patches
 - [dwm-resizecorners-6.2.diff](./patches/dwm-resizecorners-6.2.diff)
 - shiftview
 - [dwm-switchtotag-6.2.diff](./patches/dwm-switchtotag-6.2.diff)
+- [dwm-warp-6.2.diff](./patches/dwm-warp-6.2.diff)
 
 Requirements
 ------------
@@ -98,5 +101,5 @@ like this in your .xinitrc:
 
 Configuration
 -------------
-The configuration of dwm is done by editing the [config.def.h](./config.def.h), then removing `config.h`,
+The configuration of dwm is done by editing the [config.def.h](./config.def.h),
 and (re)compiling the source code.

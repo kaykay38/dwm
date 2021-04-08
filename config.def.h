@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
@@ -11,7 +11,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const unsigned int baralpha = 0xF2;
+static const unsigned int baralpha = 0xBF;
 static const unsigned int borderalpha = OPAQUE;
 //static const int usealtbar          = 1;        /* 1 means use non-dwm bar */
 //static const char *altbarclass = "Polybar";     /* Alternate bar class name */
@@ -68,10 +68,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ " |-",      tile },    /* first entry is default */
+	{ " |-",     tile },    /* first entry is default */
 	{ "< >",     NULL },    /* no layout function means floating behavior */
-	{ "[M]",    monocle },
-	{ "|┼|",      grid },
+	{ "[M]",     monocle },
+	{ "|┼|",     grid },
+	{ NULL,      NULL },
 };
 
 /* key definitions */
@@ -125,12 +126,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = pavucontrolCMD } },
 	{ 0,                            XK_Print,  spawn,          {.v = fullScreenshotCMD } },
 	{ MODKEY,                       XK_Print,  spawn,          {.v = curWindowScreenshotCMD } },
-	{ MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("/home/mia/.config/.system/selectionScreenshot.sh") },
+	{ MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("flameshot gui") },
+	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("killall -9 /usr/bin/flameshot && notify-send 'Flameshot' 'Quit Successfuly'") },
+	{ MODKEY,                       XK_n,      spawn,          SHCMD("skippy-xd") },
     { 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("volume-down") },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("volume-up") },
-	{ 0,                            XF86XK_AudioMute, spawn,    SHCMD("pamixer -t; volume-notify") },
-	{ MODKEY,                       XK_F9,     spawn,           SHCMD("pamixer -t; volume-notify") },
+	{ 0,                            XF86XK_AudioMute, spawn,   SHCMD("pamixer -t; volume-notify") },
+	{ MODKEY,                       XK_F9,     spawn,          SHCMD("pamixer -t; volume-notify") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_n,      spawn,          SHCMD("skippy-xd") },
 	{ MODKEY|Mod1Mask,              XK_h,      shiftviewtag,   {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_l,      shiftviewtag,   {.i = +1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -149,6 +153,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
+    { MODKEY,           		    XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY,                       XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
