@@ -16,7 +16,8 @@ static const unsigned int borderalpha = OPAQUE;
 //static const int usealtbar          = 1;        /* 1 means use non-dwm bar */
 //static const char *altbarclass = "Polybar";     /* Alternate bar class name */
 //static const char *altbarcmd  = "sh $HOME/.config/polyar/launch.sh"; /* Alternate bar launch command */
-static const char *fonts[]          = { "notosans nerd font:size=10.5" };
+static const char *fonts[]          = {"siji:size=13",  /* For Iconic Glyphs */
+                                       "notosans nerd font:size=11"}; /* For Normal Text */
 static const char dmenufont[]       = "notosans nerd font:size=10.5";
 static const char col_gray0[]       = "#393939";
 static const char col_gray1[]       = "#212121";
@@ -68,10 +69,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ " |-",     tile },    /* first entry is default */
-	{ "< >",     NULL },    /* no layout function means floating behavior */
-	{ "[M]",     monocle },
-	{ "|┼|",     grid },
+	{ "",     tile },    /* first entry is default */
+	{ "",     NULL },    /* no layout function means floating behavior */
+	{ "",     monocle },
+	{ "",     grid }, /**/
 	{ NULL,      NULL },
 };
 
@@ -91,7 +92,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray0, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "/usr/bin/alacritty", NULL };
-static const char *termTabbedCMD[]  = { "tabbed","-r","2","alacritty","--embed","\"\"", NULL };
+static const char *termTabbedCMD[]  = { "tabbed","-c","-r","2","alacritty","--embed","\"\"", NULL };
 static const char *termAltCMD[]  = { "/usr/bin/kitty", NULL };
 static const char *rofiCMD[] = { "rofi", "-show","drun","-show-icons", NULL };
 static const char *browserCMD[]  = { "/usr/bin/brave", "%U", NULL };
@@ -105,30 +106,37 @@ static const char *fullScreenshotCMD[]  = { "/home/mia/.config/.system/fullScree
 static const char *curWindowScreenshotCMD[]  = { "/home/mia/.config/.system/curWindowScreenshot.sh", NULL };
 static const char *todoListCMD[] = { "kitty","-e","/home/mia/OneDrive/CodeWorkspace/Scripts/todo", NULL };
 static const char *canvasCMD[] = { "/usr/bin/brave", "https://canvas.ewu.edu/", NULL};
+static const char *dualMonitorCMD[]  = { "/usr/local/bin/dual-vertical-left-monitor", NULL };
+//static const char *greenclipCMD[] = {"rofi", "-modi", "'Clipboard:greenclip", "print'", "-show", "Clipboard", "-run-command", "'{cmd}'"};
 
 #include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ Mod1Mask,                     XK_space,  spawn,          {.v = rofiCMD } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termTabbedCMD } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termTabbedCMD } },
+	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask|ShiftMask, XK_Return, spawn,          {.v = termAltCMD } },
 	{ MODKEY|Mod1Mask,              XK_space,  spawn,          {.v = browserCMD } },
 	{ MODKEY|Mod1Mask,              XK_Return, spawn,          {.v = canvasCMD } },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = todoListCMD } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = spotifyCMD } },
+    { MODKEY,                       XK_v,      spawn,          SHCMD("rofi -modi 'Clipboard:greenclip print' -show Clipboard -run-command '{cmd}'") },
 	{ MODKEY,                       XK_z,      spawn,          {.v = zoomCMD } },
 	{ MODKEY,                       XK_F1,     spawn,          {.v = youtubeCMD } },
 	{ MODKEY,                       XK_F2,     spawn,          {.v = fileExplorerCMD } },
 	{ MODKEY,                       XK_F3,     spawn,          SHCMD("/home/mia/Security/autovpn") },
 	{ MODKEY,                       XK_F4,     spawn,          {.v = discordCMD } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dualMonitorCMD } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = pavucontrolCMD } },
 	{ 0,                            XK_Print,  spawn,          {.v = fullScreenshotCMD } },
 	{ MODKEY,                       XK_Print,  spawn,          {.v = curWindowScreenshotCMD } },
 	{ MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("flameshot gui") },
 	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("killall -9 /usr/bin/flameshot && notify-send 'Flameshot' 'Quit Successfuly'") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("skippy-xd") },
+    { 0,                            XF86XK_AudioNext, spawn, SHCMD("playerctl next") },
+	{ 0,                            XF86XK_AudioPrev, spawn, SHCMD("playerctl previous") },
+	{ 0,                            XF86XK_AudioPlay, spawn, SHCMD("play-pause") },
     { 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("volume-down") },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("volume-up") },
 	{ 0,                            XF86XK_AudioMute, spawn,   SHCMD("pamixer -t; volume-notify") },
