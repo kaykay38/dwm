@@ -571,6 +571,7 @@ index b0b3466..1e2a32d 100644
  	for (m = mons; m; m = m->next) {
  		if (m->barwin)
  			continue;
+CURRENT
 -		m->barwin = XCreateWindow(dpy, root, m->wx, m->by, m->ww, bh, 0, DefaultDepth(dpy, screen),
 +		w = m->ww;
 +		if (showsystray && m == systraytomon(m))

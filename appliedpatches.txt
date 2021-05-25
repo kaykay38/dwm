@@ -13,4 +13,5 @@ dwm-pertag-20200914-61bb8b2.diff
 dwm-resizecorners-6.2.diff
 shiftview
 dwm-switchtotag-6.2.diff
+dwm-systray-20210418-67d76bd.diff
 dwm-warp-6.2.diff

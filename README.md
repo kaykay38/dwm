@@ -14,6 +14,7 @@ Key Mappings
 ------------
 | Action                        | `ModKey` = `Super/Windows` |
 |-------------------------------|----------------------------|
+| Key Bindings List | `ModKey` + `ALT` + `s` |
 | Terminal | `ModKey` + `ENTER` |
 | Tabbed Terminal | `ModKey` + `CONTROL` + `ENTER` |
 | Brave browser | `ModKey` + `ALT` + `SPACE` |
@@ -52,6 +53,7 @@ Applied Patches
 - [dwm-resizecorners-6.2.diff](./patches/dwm-resizecorners-6.2.diff)
 - shiftview
 - [dwm-switchtotag-6.2.diff](./patches/dwm-switchtotag-6.2.diff)
+- [dwm-switchtotag-6.2.diff](./patches/dwm-systray-20210418-67d76bd.diff)
 - [dwm-warp-6.2.diff](./patches/dwm-warp-6.2.diff)
 
 Requirements
@@ -64,6 +66,7 @@ In order to build dwm, you need the Xlib header files.
     **Screenshots** - Use my [screenshot scripts](https://github.com/kaykay38/dotfiles/tree/main/.config/.system) from my [dotfiles](https://github.com/kaykay38/dotfiles) ([scrot](https://github.com/resurrecting-open-source-projects/scrot) and [xclip](https://github.com/astrand/xclip) are needed for scripts to work).
 
     **Power Menu** - Use my [power menu script](https://github.com/kaykay38/dotfiles/tree/main/.config/.system/sysmenu) from my [dotfiles](https://github.com/kaykay38/dotfiles) ([rofi](https://github.com/davatorium/rofi) is needed for script to work).
+    **Key Bindings List** - bat
 
 Installation
 ------------

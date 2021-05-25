@@ -23,7 +23,7 @@ static Key keys[] = {
 	//MOD + s,                          app,        Spotify
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = spotifyInfoCMD } },
 	//MOD + Shift + s,                  music,      Spotify song info
-    { MODKEY,                       XK_v,      spawn,          {.v = greenclipCMD } },
+    { MODKEY,                       XK_v,      spawn,          SHCMD("rofi -modi 'Clipboard:greenclip print' -show Clipboard -run-command '{cmd}'") },
 	//MOD + Alt + v,                    utility,    Greenclip clipboard
 	{ MODKEY,                       XK_z,      spawn,          {.v = zoomCMD } },
 	//MOD + z,                          app,        Zoom Video Conferencing
