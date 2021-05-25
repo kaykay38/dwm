@@ -5,13 +5,13 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayonleft = 1;   	/* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const unsigned int baralpha = 0xBF;
+static const unsigned int baralpha = 0xCC;
 static const unsigned int borderalpha = OPAQUE;
 //static const int usealtbar          = 1;        /* 1 means use non-dwm bar */
 //static const char *altbarclass = "Polybar";     /* Alternate bar class name */
@@ -53,6 +53,7 @@ static const Rule rules[] = {
 	{ "Gcolor",     NULL,       NULL,       0,                 0,             1,           -1 },
 	{ "Gcr-prompter", NULL,     NULL,       0,                 0,             1,           -1 },
 	{ "Pavucontrol",NULL,       NULL,       0,                 0,             1,           -1 },
+	{ "kitty",      NULL,       NULL,       0,                 0,             1,           -1 },
 	{ "Gimp",       NULL,       NULL,       1<<3,              1,             0,           -1 },
 	{ "Spotify",    NULL,       NULL,       1<<4,              1,             0,           -1 },
 	{ "discord",    "discord",  NULL,       1<<2,              1,             0,           -1 },
@@ -95,97 +96,23 @@ static const char *termcmd[]  = { "/usr/bin/alacritty", NULL };
 static const char *termTabbedCMD[]  = { "tabbed","-c","-r","2","alacritty","--embed","\"\"", NULL };
 static const char *termAltCMD[]  = { "/usr/bin/kitty", NULL };
 static const char *rofiCMD[] = { "rofi", "-show","drun","-show-icons", NULL };
+static const char *rofiRunCMD[] = { "rofi", "-show","run", NULL };
 static const char *browserCMD[]  = { "/usr/bin/brave", "%U", NULL };
 static const char *youtubeCMD[]  = { "/usr/bin/brave", "https://www.youtube.com", NULL };
 static const char *fileExplorerCMD[]  = { "/usr/bin/pcmanfm", NULL };
 static const char *pavucontrolCMD[]  = { "/usr/bin/pavucontrol", NULL };
-static const char *spotifyCMD[]  = { "/usr/bin/spotify", NULL };
+static const char *spotifyCMD[]  = { "/usr/local/bin/spotify", NULL };
+static const char *spotifyInfoCMD[]  = { "/usr/local/bin/spotify-song-info", NULL };
 static const char *discordCMD[]  = { "/usr/bin/discord", NULL };
 static const char *zoomCMD[]  = { "/usr/bin/zoom", NULL };
 static const char *fullScreenshotCMD[]  = { "/home/mia/.config/.system/fullScreenshot.sh", NULL };
 static const char *curWindowScreenshotCMD[]  = { "/home/mia/.config/.system/curWindowScreenshot.sh", NULL };
-static const char *todoListCMD[] = { "kitty","-e","/home/mia/OneDrive/CodeWorkspace/Scripts/todo", NULL };
+/* static const char *todoListCMD[] = { "kitty","-e","/home/mia/OneDrive/CodeWorkspace/Scripts/todo", NULL }; */
 static const char *canvasCMD[] = { "/usr/bin/brave", "https://canvas.ewu.edu/", NULL};
-static const char *dualMonitorCMD[]  = { "/usr/local/bin/dual-vertical-left-monitor", NULL };
-//static const char *greenclipCMD[] = {"rofi", "-modi", "'Clipboard:greenclip", "print'", "-show", "Clipboard", "-run-command", "'{cmd}'"};
+static const char *dualMonitorCMD[]  = { "dual-vertical-left-monitor", NULL };
+static const char *greenclipCMD[] = { "rofi", "-modi","'Clipboard:greenclip print'","-show","Clipboard","-run-command","'{cmd}'", NULL};
 
-#include <X11/XF86keysym.h>
-static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ Mod1Mask,                     XK_space,  spawn,          {.v = rofiCMD } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termTabbedCMD } },
-	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ControlMask|ShiftMask, XK_Return, spawn,          {.v = termAltCMD } },
-	{ MODKEY|Mod1Mask,              XK_space,  spawn,          {.v = browserCMD } },
-	{ MODKEY|Mod1Mask,              XK_Return, spawn,          {.v = canvasCMD } },
-	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = todoListCMD } },
-	{ MODKEY,                       XK_s,      spawn,          {.v = spotifyCMD } },
-    { MODKEY,                       XK_v,      spawn,          SHCMD("rofi -modi 'Clipboard:greenclip print' -show Clipboard -run-command '{cmd}'") },
-	{ MODKEY,                       XK_z,      spawn,          {.v = zoomCMD } },
-	{ MODKEY,                       XK_F1,     spawn,          {.v = youtubeCMD } },
-	{ MODKEY,                       XK_F2,     spawn,          {.v = fileExplorerCMD } },
-	{ MODKEY,                       XK_F3,     spawn,          SHCMD("/home/mia/Security/autovpn") },
-	{ MODKEY,                       XK_F4,     spawn,          {.v = discordCMD } },
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dualMonitorCMD } },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = pavucontrolCMD } },
-	{ 0,                            XK_Print,  spawn,          {.v = fullScreenshotCMD } },
-	{ MODKEY,                       XK_Print,  spawn,          {.v = curWindowScreenshotCMD } },
-	{ MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("flameshot gui") },
-	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("killall -9 /usr/bin/flameshot && notify-send 'Flameshot' 'Quit Successfuly'") },
-	{ MODKEY,                       XK_n,      spawn,          SHCMD("skippy-xd") },
-    { 0,                            XF86XK_AudioNext, spawn, SHCMD("playerctl next") },
-	{ 0,                            XF86XK_AudioPrev, spawn, SHCMD("playerctl previous") },
-	{ 0,                            XF86XK_AudioPlay, spawn, SHCMD("play-pause") },
-    { 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("volume-down") },
-	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("volume-up") },
-	{ 0,                            XF86XK_AudioMute, spawn,   SHCMD("pamixer -t; volume-notify") },
-	{ MODKEY,                       XK_F9,     spawn,          SHCMD("pamixer -t; volume-notify") },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_n,      spawn,          SHCMD("skippy-xd") },
-	{ MODKEY|Mod1Mask,              XK_h,      shiftviewtag,   {.i = -1 } },
-	{ MODKEY|Mod1Mask,              XK_l,      shiftviewtag,   {.i = +1 } },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-   	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-    { MODKEY,           		    XK_comma,  cyclelayout,    {.i = -1 } },
-	{ MODKEY,                       XK_period, cyclelayout,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = 0  } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	/*TAGKEYS(                        XK_9,                      8)*/
-	{ MODKEY|ShiftMask,             XK_Escape, spawn,         SHCMD("/home/mia/.config/.system/sysmenu") },
-	{ ControlMask|ShiftMask,        XK_Escape,      quit,     {0} },
-};
+#include "keybindings.h"
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
