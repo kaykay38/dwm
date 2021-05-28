@@ -38,23 +38,24 @@ Key Mappings
 
 Applied Patches
 ---------------
-- [dwm-actualfullscreen-20191112-cb3f58a.diff](./patches/dwm-actualfullscreen-20191112-cb3f58a.diff)
-- [dwm-alpha-20201019-61bb8b2.diff](./patches/dwm-alpha-20201019-61bb8b2.diff)
-- [dwm-alwayscenter-20200625-f04cac6.diff](./patches/dwm-alwayscenter-20200625-f04cac6.diff)
-- [dwm-autoresize-6.1.diff](./patches/dwm-autoresize-6.1.diff)
-- [dwm-center-6.2.diff](./patches/dwm-center-6.2.diff)
-- [dwm-cyclelayouts-20180524-6.2.diff](./patches/dwm-cyclelayouts-20180524-6.2.diff)
-- [dwm-fixborders-6.2.diff](./patches/dwm-fixborders-6.2.diff)
-- [dwm-focusonnetactive-6.2.diff](./patches/dwm-focusonnetactive-6.2.diff)
-- [dwm-fullgaps-6.2.diff](./patches/dwm-fullgaps-6.2.diff)
-- [dwm-gapgrid-6.2.diff](./patches/dwm-gapgrid-6.2.diff)
+- [actualfullscreen-20191112-cb3f58a.diff](./patches/dwm-actualfullscreen-20191112-cb3f58a.diff)
+- [alpha-20201019-61bb8b2.diff](./patches/dwm-alpha-20201019-61bb8b2.diff)
+- [alwayscenter-20200625-f04cac6.diff](./patches/dwm-alwayscenter-20200625-f04cac6.diff)
+- [autoresize-6.1.diff](./patches/dwm-autoresize-6.1.diff)
+- [awesomebar-20200907-6.2.diff](./patches/dwm-awesomebar-20200907-6.2.diff)
+- [center-6.2.diff](./patches/dwm-center-6.2.diff)
+- [cyclelayouts-20180524-6.2.diff](./patches/dwm-cyclelayouts-20180524-6.2.diff)
+- [fixborders-6.2.diff](./patches/dwm-fixborders-6.2.diff)
+- [focusonnetactive-6.2.diff](./patches/dwm-focusonnetactive-6.2.diff)
+- [fullgaps-6.2.diff](./patches/dwm-fullgaps-6.2.diff)
+- [gapgrid-6.2.diff](./patches/dwm-gapgrid-6.2.diff)
 - movestack
-- [dwm-pertag-20200914-61bb8b2.diff](./patches/dwm-pertag-20200914-61bb8b2.diff)
-- [dwm-resizecorners-6.2.diff](./patches/dwm-resizecorners-6.2.diff)
+- [pertag-20200914-61bb8b2.diff](./patches/dwm-pertag-20200914-61bb8b2.diff)
+- [resizecorners-6.2.diff](./patches/dwm-resizecorners-6.2.diff)
 - shiftview
-- [dwm-switchtotag-6.2.diff](./patches/dwm-switchtotag-6.2.diff)
-- [dwm-switchtotag-6.2.diff](./patches/dwm-systray-20210418-67d76bd.diff)
-- [dwm-warp-6.2.diff](./patches/dwm-warp-6.2.diff)
+- [switchtotag-6.2.diff](./patches/dwm-switchtotag-6.2.diff)
+- [systray-20210418-67d76bd.diff](./patches/dwm-systray-20210418-67d76bd.diff)
+- [warp-6.2.diff](./patches/dwm-warp-6.2.diff)
 
 Requirements
 ------------

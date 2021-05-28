@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -11,7 +11,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const unsigned int baralpha = 0xCC;
+static const unsigned int baralpha = 0xD9;
 static const unsigned int borderalpha = OPAQUE;
 //static const int usealtbar          = 1;        /* 1 means use non-dwm bar */
 //static const char *altbarclass = "Polybar";     /* Alternate bar class name */
@@ -19,27 +19,30 @@ static const unsigned int borderalpha = OPAQUE;
 static const char *fonts[]          = {"siji:size=13",  /* For Iconic Glyphs */
                                        "notosans nerd font:size=11"}; /* For Normal Text */
 static const char dmenufont[]       = "notosans nerd font:size=10.5";
-static const char col_gray0[]       = "#393939";
+static const char col_gray0[]       = "#404040";
 static const char col_gray1[]       = "#212121";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+static const char col_gray4[]       = "#efefef";
 static const char col_gray5[]       = "#636363";
-//static const char col_gray6[]       = "#2d2d2d"; //border?
+static const char col_gray6[]       = "#171717";
+static const char col_gray7[]       = "#777777";
 //static const char col_urgent1[]       ="#c9695f";
 //static const char col_urgent2[]       ="#d14434";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray0 },
-	[SchemeSel]  = { col_gray4, col_gray0, col_gray5 },
-	[SchemeSystray]  = { col_gray3, col_gray1, col_gray0 },
+	[SchemeSel]  = { col_gray4, col_gray0, col_gray7 },
+	[SchemeHid]  = { col_gray3, col_gray6, col_gray0  },
+	[SchemeSystray] = { col_gray3, col_gray1, col_gray0 },
 };
 
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
-	[SchemeSystray]  = { OPAQUE, baralpha, baralpha },
+	[SchemeHid]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeSystray]  = { baralpha, baralpha, baralpha },
 };
 
 /* tagging */
@@ -55,7 +58,7 @@ static const Rule rules[] = {
 	{ "Gcolor",     NULL,       NULL,       0,                 0,             1,           -1 },
 	{ "Gcr-prompter", NULL,     NULL,       0,                 0,             1,           -1 },
 	{ "Pavucontrol",NULL,       NULL,       0,                 0,             1,           -1 },
-	{ "kitty",      NULL,       NULL,       0,                 0,             1,           -1 },
+	{ "Alacritty",  NULL,       "DWM Key Bindings",       0,                 0,             1,           -1 },
 	{ "Gimp",       NULL,       NULL,       1<<3,              1,             0,           -1 },
 	{ "Spotify",    NULL,       NULL,       1<<4,              1,             0,           -1 },
 	{ "discord",    "discord",  NULL,       1<<2,              1,             0,           -1 },
@@ -99,12 +102,13 @@ static const char *termTabbedCMD[]  = { "tabbed","-c","-r","2","alacritty","--em
 static const char *termAltCMD[]  = { "/usr/bin/kitty", NULL };
 static const char *rofiCMD[] = { "rofi", "-show","drun","-show-icons", NULL };
 static const char *rofiRunCMD[] = { "rofi", "-show","run", NULL };
+static const char *rofiWindowCMD[] = { "rofi", "-show","window", "-show-icons", NULL };
 static const char *browserCMD[]  = { "/usr/bin/brave", "%U", NULL };
 static const char *youtubeCMD[]  = { "/usr/bin/brave", "https://www.youtube.com", NULL };
 static const char *fileExplorerCMD[]  = { "/usr/bin/pcmanfm", NULL };
 static const char *pavucontrolCMD[]  = { "/usr/bin/pavucontrol", NULL };
 static const char *spotifyCMD[]  = { "/usr/local/bin/spotify", NULL };
-static const char *spotifyInfoCMD[]  = { "/usr/local/bin/spotify-song-info", NULL };
+static const char *playerctlInfoCMD[]  = { "/usr/local/bin/playerctl-info", NULL };
 static const char *discordCMD[]  = { "/usr/bin/discord", NULL };
 static const char *zoomCMD[]  = { "/usr/bin/zoom", NULL };
 static const char *fullScreenshotCMD[]  = { "/home/mia/.config/.system/fullScreenshot.sh", NULL };
@@ -122,6 +126,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },

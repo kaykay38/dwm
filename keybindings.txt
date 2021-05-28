@@ -1,72 +1,77 @@
-MODKEY + Alt + s,                 utility,    show DWM key bindings
-MODKEY + p,                       spawn,      Dmenu run
-Alt + Space,                      spawn,      Rofi drun
-MOD + r,                          spawn,      Rofi run
-MOD + Enter,                      spawn,      Alacritty tabbed
-MOD + Control + Enter,            spawn,      Alacritty terminal
-MOD + Control + Shift + Enter,    spawn,      Kitty terminal
-MOD + Alt + Space,                app,        Brave browser
-MOD + Alt + Enter,                app,        Canvas
-MOD + s,                          app,        Spotify
-MOD + Shift + s,                  music,      Spotify song info
-MOD + Alt + v,                    utility,    Greenclip clipboard
-MOD + z,                          app,        Zoom Video Conferencing
-MOD + F1,                         app,        Youtube
-MOD + F2,                         utility,    Pcmanfm file browser
-MOD + F3,                         system,     EWU VPN
-MOD + F4,                         app,        Discord
-MOD + Shift + d,                  system,     dual vertical monitor toggle
-MOD + Shift + m,                  spawn,      Pavucontrol
-Print,                            utility,    screenshot full screen
-MOD + Print,                      utility,    screenshot window
-MOD + Shift + Print,              utility,    screenshot selection (Flameshot)
-Alt + Print,                      utility,    quit Flameshot
-MOD + n,                          system,     dashboard view
-XF86XK_AudioNext,                 funciton,   Playerctl next
-XF86XK_AudioPrev,                 function,   Playerctl previous
-XF86XK_AudioPlay,                 function,   play/pause
-XF86XK_AudioLowerVolume,          function,   decrease volume
-XF86XK_AudioRaiseVolume,          function,   increase volume
-XF86XK_AudioMute,                 function,   mute/unmute
-MOD + b,                          appearance, toggle bar
-MOD + Alt + h,                    tag,        next tag
-MOD + Alt + k,                    tag,        previous tag
-MOD + j,                          window,     focus next window
-MOD + k,                          window,     focus previous window
-MOD + Shift + j,                  window,     move window up stack
-MOD + Shift + k,                  window,     move window down stack
-MOD + i,                          layout,     increase master stack
-MOD + d,                          layout,     decrease master stack
-MOD + h,                          window,     decrease window width
-MOD + l,                          window,     increase window width
-MOD + Shift + Enter,              window,     move to master stack
-MOD + Tab,                        tag,        go to previously navigated tag 
-MOD + q,                          window,     kill window
-MOD + t,                          layout,     tiling master/stack layout
-MOD + f,                          layout,     floating layout
-MOD + m,                          layout,     monocle layout
-MOD + g,                          layout,     grid layout
-MOD + Space,                      layout,     toggle between most recently used two layouts
-MOD + Alt + , ,                   spawn,      cycle layouts previous
-MOD + Alt + . ,                   spawn,      cycle layouts next
-MOD + Shift + f,                  window,     toggle fullscreen
-MOD + Shift + Space,              window,     toggle floating
-MOD + 0,                          spawn,      view
-MOD + Shift + 0,                  window,     toggle show on every tag
-MOD + , ,                         screen,     focus previous monitor
-MOD + . ,                         screen,     focus next monitor
-MOD + Shift + , ,                 window,     move window to previous monitor
-MOD + Shift + . ,                 window,     move window to next monitor
-MOD + -,                          gap,        decrease gap
-MOD + =,                          gap,        increase gaps
-MOD + Shift + -,                  gap,        remove gaps
-MOD + 1,                          tag,        tag 1
-MOD + 2,                          tag,        tag 2
-MOD + 3,                          tag,        tag 3
-MOD + 4,                          tag,        tag 4
-MOD + 5,                          tag,        tag 5
-MOD + 6,                          tag,        tag 6
-MOD + 7,                          tag,        tag 7
-MOD + 8,                          tag,        tag 8
-MOD + Shift + Escape,             system,     system menu
-Control + Shift + Escape,         system,     logout/quit dwm
+appearance,    MOD + b,                          toggle bar
+app,           MOD + Alt + Enter,                Canvas
+app,           MOD + Alt + Space,                Brave browser
+app,           MOD + F1,                         Youtube
+app,           MOD + F4,                         Discord
+app,           MOD + s,                          Spotify
+app,           MOD + z,                          Zoom Video Conferencing
+function,      XF86XK_AudioLowerVolume,          decrease volume
+function,      XF86XK_AudioMute,                 mute/unmute
+function,      XF86XK_AudioNext,                 Playerctl next
+function,      XF86XK_AudioPlay,                 play/pause
+function,      XF86XK_AudioPrev,                 Playerctl previous
+function,      XF86XK_AudioRaiseVolume,          increase volume
+gap,           MOD + -,                          decrease gap
+gap,           MOD + =,                          increase gaps
+gap,           MOD + Shift + -,                  remove gaps
+layout,        MOD + Alt + . ,                   cycle layouts next
+layout,        MOD + Alt + , ,                   cycle layouts previous
+layout,        MOD + d,                          decrease master stack
+layout,        MOD + f,                          floating layout
+layout,        MOD + g,                          grid layout
+layout,        MOD + i,                          increase master stack
+layout,        MOD + m,                          monocle layout
+layout,        MOD + Space,                      toggle between most recently used two layouts
+layout,        MOD + t,                          tiling master/stack layout
+music,         MOD + Shift + s,                  Playterctl info
+screen,        MOD + . ,                         focus next monitor
+screen,        MOD + , ,                         focus previous monitor
+system,        Control + Shift + Escape,         logout/quit dwm
+system,        MOD + Control + Alt + Space,      dashboard view
+system,        MOD + F3,                         EWU VPN
+system,        MOD + Shift + d,                  dual vertical monitor toggle
+system,        MOD + Shift + Escape,             system menu
+tag,           MOD + 1,                          tag 1
+tag,           MOD + 2,                          tag 2
+tag,           MOD + 3,                          tag 3
+tag,           MOD + 4,                          tag 4
+tag,           MOD + 5,                          tag 5
+tag,           MOD + 6,                          tag 6
+tag,           MOD + 7,                          tag 7
+tag,           MOD + 8,                          tag 8
+tag,           MOD + Alt + h,                    next tag
+tag,           MOD + Alt + k,                    previous tag
+tag,           MOD + Tab,                        go to previously navigated tag 
+utility,       Alt + Print,                      quit Flameshot
+utility,       Alt + Space,                      Rofi drun
+utility,       MOD + 0,                          view
+utility,       MOD + Alt + v,                    Greenclip clipboard
+utility,       MOD + Control + Enter,            Alacritty terminal
+utility,       MOD + Control + Shift + Enter,    Kitty terminal
+utility,       MOD + Enter,                      Alacritty tabbed
+utility,       MOD + F2,                         Pcmanfm file browser
+utility,       MODKEY + Alt + s,                 show DWM key bindings
+utility,       MODKEY + p,                       Dmenu run
+utility,       MOD + Print,                      screenshot window
+utility,       MOD + r,                          Rofi run
+utility,       MOD + Shift + m,                  Pavucontrol
+utility,       MOD + Shift + Print,              screenshot selection (Flameshot)
+utility,       MOD + w,                          Rofi windows
+utility,       Print,                            screenshot full screen
+window,        MOD + Alt + j,                    focus next hidden window
+window,        MOD + Alt + k,                    focus previous hidden window
+window,        MOD + h,                          decrease window width
+window,        MOD + j,                          focus next visible window
+window,        MOD + k,                          focus previous visible window
+window,        MOD + l,                          increase window width
+window,        MOD + n,                          hidden window
+window,        MOD + q,                          kill window
+window,        MOD + Shift + 0,                  toggle show on every tag
+window,        MOD + Shift + Enter,              move to master stack
+window,        MOD + Shift + f,                  toggle fullscreen
+window,        MOD + Shift + j,                  move window up stack
+window,        MOD + Shift + k,                  move window down stack
+window,        MOD + Shift + . ,                 move window to next monitor
+window,        MOD + Shift + , ,                 move window to previous monitor
+window,        MOD + Shift + n,                  show hidden window
+window,        MOD + Shift + Space,              toggle floating
