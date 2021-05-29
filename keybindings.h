@@ -3,8 +3,8 @@ static Key keys[] = {
 	/* modifier                     key        function        argument    */
     { MODKEY|Mod1Mask,              XK_s,      spawn,          SHCMD("alacritty --title 'DWM Key Bindings' -e bat --wrap=never --file-name 'DWM Key Bindings' /home/mia/Suckless/dwm/keybindings.txt")},
 	//utility,       MODKEY + Alt + s,                 show DWM key bindings
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	//utility,       MODKEY + p,                       Dmenu run
+	{ MODKEY|Mod1Mask,              XK_p,      spawn,          {.v = dmenucmd } },
+	//utility,       MODKEY + Alt + p,                 Dmenu run
 	{ Mod1Mask,                     XK_space,  spawn,          {.v = rofiCMD } },
 	//utility,       Alt + Space,                      Rofi drun
 	{ MODKEY,                       XK_r,      spawn,          {.v = rofiRunCMD } },
@@ -22,7 +22,9 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,              XK_Return, spawn,          {.v = canvasCMD } },
 	//app,           MOD + Alt + Enter,                Canvas
 	{ MODKEY,                       XK_s,      spawn,          {.v = spotifyCMD } },
-	//app,           MOD + s,                          Spotify
+	//music,         MOD + s,                          Spotify
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("/usr/local/bin/musicplaylist") },
+	//music,         MOD + p,                          music playlists (Rofi)
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = playerctlInfoCMD } },
 	//music,         MOD + Shift + s,                  Playterctl info
     { MODKEY,                       XK_v,      spawn,          SHCMD("rofi -modi 'Clipboard:greenclip print' -show Clipboard -run-command '{cmd}'") },
