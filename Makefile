@@ -43,7 +43,7 @@ install: all
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
-	rg '^\s*//.*,.*,.*' keybindings.h | sed 's#\s*//##' | sort > keybindings.txt
+	rg '^\s*//.*,.*,.*' keybindings.h | sed 's#\s*//##' | sort -t, -k1,1 -k3,3 > keybindings.txt
 	
 
 uninstall:

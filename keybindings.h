@@ -1,11 +1,50 @@
+/* KEY BINDINGS */
+
 #include <X11/XF86keysym.h>
+
+/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+
+/* commands */
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray0, "-sf", col_gray4, NULL };
+static const char *termcmd[]  = { "/usr/bin/alacritty", NULL };
+static const char *termTabbedCMD[]  = { "tabbed","-c","-r","2","alacritty","--embed","\"\"", NULL };
+static const char *termAltCMD[]  = { "/usr/bin/kitty", NULL };
+static const char *rofiCMD[] = { "rofi", "-show","drun","-show-icons", NULL };
+static const char *rofiRunCMD[] = { "rofi", "-show","run", NULL };
+static const char *rofiWindowCMD[] = { "rofi", "-show","window", "-show-icons", NULL };
+static const char *browserCMD[]  = { "/usr/bin/brave", "%U", NULL };
+static const char *youtubeCMD[]  = { "/usr/bin/brave", "https://www.youtube.com", NULL };
+static const char *fileExplorerCMD[]  = { "/usr/bin/pcmanfm", NULL };
+static const char *pavucontrolCMD[]  = { "/usr/bin/pavucontrol", NULL };
+static const char *spotifyCMD[]  = { "spotify", NULL };
+static const char *playerctlInfoCMD[]  = { "/usr/local/bin/playerctl-info", NULL };
+static const char *discordCMD[]  = { "/usr/bin/discord", NULL };
+static const char *zoomCMD[]  = { "/usr/bin/zoom", NULL };
+static const char *fullScreenshotCMD[]  = { "/home/mia/.config/.system/fullScreenshot.sh", NULL };
+static const char *curWindowScreenshotCMD[]  = { "/home/mia/.config/.system/curWindowScreenshot.sh", NULL };
+/* static const char *selectionScreenshotCMD[]  = { "/home/mia/.config/.system/selectionScreenshot.sh", NULL }; */
+/* static const char *todoListCMD[] = { "kitty","-e","/home/mia/OneDrive/CodeWorkspace/Scripts/todo", NULL }; */
+static const char *canvasCMD[] = { "/usr/bin/brave", "https://canvas.ewu.edu/", NULL};
+static const char *dualMonitorCMD[]  = { "dual-vertical-left-monitor", NULL };
+
+/* key definitions */
+#define ALT Mod1Mask // Mod1Mask=ALT DEFAULT SETTING
+#define MODKEY Mod4Mask // Mod4Mask=Windows/Super key 
+#define TAGKEYS(KEY,TAG) \
+	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+
 static Key keys[] = {
 	/* modifier                     key        function        argument    */
-    { MODKEY|Mod1Mask,              XK_s,      spawn,          SHCMD("alacritty --title 'DWM Key Bindings' -e bat --wrap=never --file-name 'DWM Key Bindings' /home/mia/Suckless/dwm/keybindings.txt")},
-	//utility,       MODKEY + Alt + s,                 show DWM key bindings
-	{ MODKEY|Mod1Mask,              XK_p,      spawn,          {.v = dmenucmd } },
-	//utility,       MODKEY + Alt + p,                 Dmenu run
-	{ Mod1Mask,                     XK_space,  spawn,          {.v = rofiCMD } },
+    { MODKEY|ALT,              		XK_s,      spawn,          SHCMD("/usr/local/bin/dwmkeybindings")},
+	//utility,       MOD + s,                          show DWM key bindings
+	{ MODKEY|ALT,              		XK_p,      spawn,          {.v = dmenucmd } },
+	//utility,       MOD + Alt + p,                    Dmenu run
+	{ ALT,                     		XK_space,  spawn,          {.v = rofiCMD } },
 	//utility,       Alt + Space,                      Rofi drun
 	{ MODKEY,                       XK_r,      spawn,          {.v = rofiRunCMD } },
 	//utility,       MOD + r,                          Rofi run
@@ -17,18 +56,18 @@ static Key keys[] = {
 	//utility,       MOD + Control + Enter,            Alacritty terminal
 	{ MODKEY|ControlMask|ShiftMask, XK_Return, spawn,          {.v = termAltCMD } },
 	//utility,       MOD + Control + Shift + Enter,    Kitty terminal
-	{ MODKEY|Mod1Mask,              XK_space,  spawn,          {.v = browserCMD } },
+	{ MODKEY|ALT,              		XK_space,  spawn,          {.v = browserCMD } },
 	//app,           MOD + Alt + Space,                Brave browser
-	{ MODKEY|Mod1Mask,              XK_Return, spawn,          {.v = canvasCMD } },
+	{ MODKEY|ALT,              		XK_Return, spawn,          {.v = canvasCMD } },
 	//app,           MOD + Alt + Enter,                Canvas
-	{ MODKEY,                       XK_s,      spawn,          {.v = spotifyCMD } },
-	//music,         MOD + s,                          Spotify
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("/usr/local/bin/musicplaylist") },
-	//music,         MOD + p,                          music playlists (Rofi)
+	{ MODKEY|ALT,                   XK_s,      spawn,          {.v = spotifyCMD } },
+	//music,         MOD + Alt + s,                    Spotify
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("/usr/local/bin/mpvplaylist") },
+	//music,         MOD + p,                          music/video playlists (Rofi,mpv)
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = playerctlInfoCMD } },
 	//music,         MOD + Shift + s,                  Playterctl info
     { MODKEY,                       XK_v,      spawn,          SHCMD("rofi -modi 'Clipboard:greenclip print' -show Clipboard -run-command '{cmd}'") },
-	//utility,       MOD + Alt + v,                    Greenclip clipboard
+	//utility,       MOD + v,                          Greenclip clipboard
 	{ MODKEY,                       XK_z,      spawn,          {.v = zoomCMD } },
 	//app,           MOD + z,                          Zoom Video Conferencing
 	{ MODKEY,                       XK_F1,     spawn,          {.v = youtubeCMD } },
@@ -49,9 +88,9 @@ static Key keys[] = {
 	//utility,       MOD + Print,                      screenshot window
 	{ MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("flameshot gui") },
 	//utility,       MOD + Shift + Print,              screenshot selection (Flameshot)
-	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("killall -9 '/usr/bin/flameshot' && notify-send 'Flameshot' 'Quit Successfuly'") },
+	{ ALT,                     		XK_Print,  spawn,          SHCMD("killall -9 '/usr/bin/flameshot' && notify-send 'Flameshot' 'Quit Successfuly'") },
 	//utility,       Alt + Print,                      quit Flameshot
-	{ MODKEY|ControlMask|Mod1Mask,  XK_space,  spawn,          SHCMD("skippy-xd") },
+	{ MODKEY|ControlMask|ALT,  		XK_space,  spawn,          SHCMD("skippy-xd") },
 	//system,        MOD + Control + Alt + Space,      dashboard view
     { 0,                            XF86XK_AudioNext, spawn,   SHCMD("playerctl --player=spotify,spotifyd,mpv,%any next") },
 	//function,      XF86XK_AudioNext,                 Playerctl next
@@ -67,17 +106,21 @@ static Key keys[] = {
 	//function,      XF86XK_AudioMute,                 mute/unmute
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	//appearance,    MOD + b,                          toggle bar
-	{ MODKEY|Mod1Mask,              XK_h,      shiftviewtag,   {.i = -1 } },
+	{ MODKEY|ALT,              		XK_h,      shiftviewtag,   {.i = -1 } },
 	//tag,           MOD + Alt + h,                    next tag
-	{ MODKEY|Mod1Mask,              XK_l,      shiftviewtag,   {.i = +1 } },
-	//tag,           MOD + Alt + k,                    previous tag
+	{ MODKEY|ALT,              		XK_l,      shiftviewtag,   {.i = +1 } },
+	//tag,           MOD + Alt + l,                    previous tag
+	/* { MODKEY,                       XK_j,      focusstack,  {.i = +1 } }, */
+	/* //window,        MOD + j,                          focus next visible window */
+	/* { MODKEY,                       XK_k,      focusstack,  {.i = -1 } }, */
+	/* //window,        MOD + k,                          focus previous visible window */
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
 	//window,        MOD + j,                          focus next visible window
 	{ MODKEY,                       XK_k,      focusstackvis,  {.i = -1 } },
 	//window,        MOD + k,                          focus previous visible window
-	{ MODKEY|Mod1Mask,              XK_j,      focusstackhid,  {.i = +1 } },
+	{ MODKEY|ALT,                   XK_j,      focusstackhid,  {.i = +1 } },
 	//window,        MOD + Alt + j,                    focus next hidden window
-	{ MODKEY|Mod1Mask,              XK_k,      focusstackhid,  {.i = -1 } },
+	{ MODKEY|ALT,              		XK_k,      focusstackhid,  {.i = -1 } },
 	//window,        MOD + Alt + k,                    focus previous hidden window
 	{ MODKEY|ShiftMask,             XK_n,      show,           {0} },
 	//window,        MOD + Shift + n,                  show hidden window
@@ -111,16 +154,16 @@ static Key keys[] = {
 	//layout,        MOD + g,                          grid layout
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	//layout,        MOD + Space,                      toggle between most recently used two layouts
-    { MODKEY|Mod1Mask,     		    XK_comma,  cyclelayout,    {.i = -1 } },
+    { MODKEY|ALT,     		        XK_comma,  cyclelayout,    {.i = -1 } },
 	//layout,        MOD + Alt + , ,                   cycle layouts previous
-	{ MODKEY|Mod1Mask,              XK_period, cyclelayout,    {.i = +1 } },
+	{ MODKEY|ALT,                   XK_period, cyclelayout,    {.i = +1 } },
 	//layout,        MOD + Alt + . ,                   cycle layouts next
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	//window,        MOD + Shift + f,                  toggle fullscreen
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	//window,        MOD + Shift + Space,              toggle floating
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	//utility,       MOD + 0,                          view
+	//window,        MOD + 0,                          view
 	/* { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } }, */
 	/* //window,        MOD + Shift + 0,                  show on every tag */
 	{ MODKEY|ShiftMask,             XK_0,      toggletag,            {.ui = ~0 } },
@@ -157,8 +200,27 @@ static Key keys[] = {
 	//tag,           MOD + 8,                          tag 8
 
 	/*TAGKEYS(                        XK_9,                      8)*/
-	{ MODKEY|ShiftMask,             XK_Escape, spawn,         SHCMD("/home/mia/.config/.system/sysmenu") },
+	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("/home/mia/.config/.system/sysmenu") },
 	//system,        MOD + Shift + Escape,             system menu
-	{ ControlMask|ShiftMask,        XK_Escape,      quit,     {0} },
+	{ ControlMask|ShiftMask,        XK_Escape, quit,     	   {0} },
 	//system,        Control + Shift + Escape,         logout/quit dwm
+};
+
+/* button definitions */
+/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+static Button buttons[] = {
+	/* click                event mask      button          function        argument */
+	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
+	{ ClkWinTitle,          0,              Button3,        killclient,     {0} },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };

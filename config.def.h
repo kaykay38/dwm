@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayonleft = 1;   	/* 0: systray in the right corner, >0: systray on left of status text */
-static const unsigned int systrayspacing = 4;   /* systray spacing */
+static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayspacing = 6;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -33,16 +33,16 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray0 },
 	[SchemeSel]  = { col_gray4, col_gray0, col_gray7 },
-	[SchemeHid]  = { col_gray3, col_gray6, col_gray0  },
-	[SchemeSystray] = { col_gray3, col_gray1, col_gray0 },
+	/* [SchemeHid]  = { col_gray3, col_gray6, col_gray0  }, */
+	/* [SchemeSystray] = { col_gray3, col_gray1, col_gray1 }, */
 };
 
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
-	[SchemeHid]  = { OPAQUE, baralpha, borderalpha },
-	[SchemeSystray]  = { baralpha, baralpha, baralpha },
+	/* [SchemeHid]  = { OPAQUE, baralpha, borderalpha }, */
+	/* [SchemeSystray]  = { baralpha, baralpha, baralpha }, */
 };
 
 /* tagging */
@@ -61,7 +61,7 @@ static const Rule rules[] = {
 	{ "Alacritty",  NULL,       "DWM Key Bindings",       0,                 0,             1,           -1 },
 	{ "Gimp",       NULL,       NULL,       1<<3,              1,             0,           -1 },
 	{ "Spotify",    NULL,       NULL,       1<<4,              1,             0,           -1 },
-	{ "discord",    "discord",  NULL,       1<<2,              1,             0,           -1 },
+	{ "discord",    NULL,       NULL,       1<<2,              1,             0,           -1 },
 	{ "zoom",       NULL,       NULL,       1<<2,              1,             0,           -1 },
 	{ "Microsoft Teams - Preview", NULL, NULL, 1<<2,           1,             0,           -1 },
 	{ "Steam",      NULL,       NULL,       1<<6,              1,             0,           -1 },
@@ -82,57 +82,4 @@ static const Layout layouts[] = {
 	{ NULL,      NULL },
 };
 
-/* key definitions */
-//#define MODKEY Mod1Mask // Mod1Mask=ALT DEFAULT SETTING
-#define MODKEY Mod4Mask // Mod4Mask=Windows/Super key 
-#define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
-/* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray0, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "/usr/bin/alacritty", NULL };
-static const char *termTabbedCMD[]  = { "tabbed","-c","-r","2","alacritty","--embed","\"\"", NULL };
-static const char *termAltCMD[]  = { "/usr/bin/kitty", NULL };
-static const char *rofiCMD[] = { "rofi", "-show","drun","-show-icons", NULL };
-static const char *rofiRunCMD[] = { "rofi", "-show","run", NULL };
-static const char *rofiWindowCMD[] = { "rofi", "-show","window", "-show-icons", NULL };
-static const char *browserCMD[]  = { "/usr/bin/brave", "%U", NULL };
-static const char *youtubeCMD[]  = { "/usr/bin/brave", "https://www.youtube.com", NULL };
-static const char *fileExplorerCMD[]  = { "/usr/bin/pcmanfm", NULL };
-static const char *pavucontrolCMD[]  = { "/usr/bin/pavucontrol", NULL };
-static const char *spotifyCMD[]  = { "/usr/local/bin/spotify", NULL };
-static const char *playerctlInfoCMD[]  = { "/usr/local/bin/playerctl-info", NULL };
-static const char *discordCMD[]  = { "/usr/bin/discord", NULL };
-static const char *zoomCMD[]  = { "/usr/bin/zoom", NULL };
-static const char *fullScreenshotCMD[]  = { "/home/mia/.config/.system/fullScreenshot.sh", NULL };
-static const char *curWindowScreenshotCMD[]  = { "/home/mia/.config/.system/curWindowScreenshot.sh", NULL };
-/* static const char *todoListCMD[] = { "kitty","-e","/home/mia/OneDrive/CodeWorkspace/Scripts/todo", NULL }; */
-static const char *canvasCMD[] = { "/usr/bin/brave", "https://canvas.ewu.edu/", NULL};
-static const char *dualMonitorCMD[]  = { "dual-vertical-left-monitor", NULL };
-
 #include "keybindings.h"
-
-/* button definitions */
-/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
-static Button buttons[] = {
-	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-};
