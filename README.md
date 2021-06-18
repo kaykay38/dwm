@@ -12,50 +12,52 @@ Screenshots
 
 Key Mappings
 ------------
-| Action                        | `ModKey` = `Super/Windows` |
+| Action                        | `MODKEY` = `Super/Windows` |
 |-------------------------------|----------------------------|
-| Key Bindings List | `ModKey` + `ALT` + `s` |
-| Terminal | `ModKey` + `ENTER` |
-| Tabbed Terminal | `ModKey` + `CONTROL` + `ENTER` |
-| Brave browser | `ModKey` + `ALT` + `SPACE` |
+| Key Bindings List | `MODKEY` + `s` |
+| Terminal | `MODKEY` + `ENTER` |
+| Tabbed Terminal | `MODKEY` + `CONTROL` + `ENTER` |
+| Brave browser | `MODKEY` + `ALT` + `SPACE` |
 | Rofi app launcher | `ALT` + `SPACE` |
-| Dmenu app launcher | `ModKey` + `p` |
-| Shift view tag left | `ModKey` + `ALT` + `l` |
-| Shift view tag right | `ModKey` + `ALT` + `h` |
-| Move window to master position | `ModKey` + `SHIFT` + `ENTER` |
-| Move window up in stack | `ModKey` + `SHIFT` + `k` |
-| Move window down in stack | `ModKey` + `SHIFT` + `j` |
-| Focus window up in stack | `ModKey` + `k` |
-| Focus window down in stack | `ModKey` + `j` |
+| Dmenu app launcher | `MODKEY` + `ALT` + `p` |
+| Shift view tag left | `MODKEY` + `ALT` + `h` |
+| Shift view tag right | `MODKEY` + `ALT` + `l` |
+| Move window to master position | `MODKEY` + `SHIFT` + `ENTER` |
+| Move window up in stack | `MODKEY` + `SHIFT` + `k` |
+| Move window down in stack | `MODKEY` + `SHIFT` + `j` |
+| Focus window up in stack | `MODKEY` + `k` |
+| Focus window down in stack | `MODKEY` + `j` |
 | Full screenshot | `PRINT SCREEN` |
-| Current window screenshot | `ModKey` + `PRINT SCREEN` |
-| Selection screenshot | `ModKey` + `SHIFT` + `PRINT SCREEN` |
-| Increase gap | `ModKey` + `=` |
-| Decrease gap | `ModKey` + `-` |
-| No gap | `ModKey` + `SHIFT` + `-` |
+| Current window screenshot | `MODKEY` + `PRINT SCREEN` |
+| Selection screenshot | `MODKEY` + `SHIFT` + `PRINT SCREEN` |
+| Increase gap | `MODKEY` + `=` |
+| Decrease gap | `MODKEY` + `-` |
+| No gap | `MODKEY` + `SHIFT` + `-` |
+| Restart dwm | `MODKEY` + `SHIFT` + `r` |
 | Logout | `CONTROL` + `SHIFT` + `ESCAPE` |
-| Power Menu | `ModKey` + `SHIFT` + `ESCAPE` |
+| Power Menu | `MODKEY` + `SHIFT` + `ESCAPE` |
 
 Applied Patches
 ---------------
-- [actualfullscreen-20191112-cb3f58a.diff](./patches/dwm-actualfullscreen-20191112-cb3f58a.diff)
-- [alpha-20201019-61bb8b2.diff](./patches/dwm-alpha-20201019-61bb8b2.diff)
-- [alwayscenter-20200625-f04cac6.diff](./patches/dwm-alwayscenter-20200625-f04cac6.diff)
-- [autoresize-6.1.diff](./patches/dwm-autoresize-6.1.diff)
-- [awesomebar-20200907-6.2.diff](./patches/dwm-awesomebar-20200907-6.2.diff)
-- [center-6.2.diff](./patches/dwm-center-6.2.diff)
-- [cyclelayouts-20180524-6.2.diff](./patches/dwm-cyclelayouts-20180524-6.2.diff)
-- [fixborders-6.2.diff](./patches/dwm-fixborders-6.2.diff)
-- [focusonnetactive-6.2.diff](./patches/dwm-focusonnetactive-6.2.diff)
-- [fullgaps-6.2.diff](./patches/dwm-fullgaps-6.2.diff)
-- [gapgrid-6.2.diff](./patches/dwm-gapgrid-6.2.diff)
+- [actualfullscreen](./patches/dwm-actualfullscreen-20191112-cb3f58a.diff)
+- [alpha](./patches/dwm-alpha-20201019-61bb8b2.diff)
+- [alwayscenter](./patches/dwm-alwayscenter-20200625-f04cac6.diff)
+- [autoresize](./patches/dwm-autoresize-6.1.diff)
+- [awesomebar](./patches/dwm-awesomebar-20200907-6.2.diff)
+- [center](./patches/dwm-center-6.2.diff)
+- [cyclelayouts](./patches/dwm-cyclelayouts-20180524-6.2.diff)
+- [fixborders](./patches/dwm-fixborders-6.2.diff)
+- [focusonnetactive](./patches/dwm-focusonnetactive-6.2.diff)
+- [fullgaps](./patches/dwm-fullgaps-6.2.diff)
+- [gapgrid](./patches/dwm-gapgrid-6.2.diff)
 - movestack
-- [pertag-20200914-61bb8b2.diff](./patches/dwm-pertag-20200914-61bb8b2.diff)
-- [resizecorners-6.2.diff](./patches/dwm-resizecorners-6.2.diff)
+- [pertag](./patches/dwm-pertag-20200914-61bb8b2.diff)
+- [resizecorners](./patches/dwm-resizecorners-6.2.diff)
+- [restartsig](./patches/dwm-restartsig-20180523-6.2.diff)
 - shiftview
-- [switchtotag-6.2.diff](./patches/dwm-switchtotag-6.2.diff)
-- [systray-20210418-67d76bd.diff](./patches/dwm-systray-20210418-67d76bd.diff)
-- [warp-6.2.diff](./patches/dwm-warp-6.2.diff)
+- [switchtotag](./patches/dwm-switchtotag-6.2.diff)
+- [systray](./patches/dwm-systray-20210418-67d76bd.diff)
+- [warp-6.2](./patches/dwm-warp-6.2.diff)
 
 Requirements
 ------------

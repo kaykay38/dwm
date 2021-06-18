@@ -32,6 +32,7 @@ static const char *dualMonitorCMD[]  = { "dual-vertical-left-monitor", NULL };
 /* key definitions */
 #define ALT Mod1Mask // Mod1Mask=ALT DEFAULT SETTING
 #define MODKEY Mod4Mask // Mod4Mask=Windows/Super key 
+// MOD = Super/Windows Key
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -40,10 +41,10 @@ static const char *dualMonitorCMD[]  = { "dual-vertical-left-monitor", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument    */
-    { MODKEY|ALT,              		XK_s,      spawn,          SHCMD("/usr/local/bin/dwmkeybindings")},
-	//utility,       MOD + s,                          show DWM key bindings
+    { MODKEY,              		    XK_s,      spawn,          SHCMD("/usr/local/bin/dwmkeybindings")},
+	//utility,       MOD + s,                          show dwm key bindings
 	{ MODKEY|ALT,              		XK_p,      spawn,          {.v = dmenucmd } },
-	//utility,       MOD + Alt + p,                    Dmenu run
+	//utility,       MOD + Alt + p,                    dmenu run
 	{ ALT,                     		XK_space,  spawn,          {.v = rofiCMD } },
 	//utility,       Alt + Space,                      Rofi drun
 	{ MODKEY,                       XK_r,      spawn,          {.v = rofiRunCMD } },
@@ -166,7 +167,7 @@ static Key keys[] = {
 	//window,        MOD + 0,                          view
 	/* { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } }, */
 	/* //window,        MOD + Shift + 0,                  show on every tag */
-	{ MODKEY|ShiftMask,             XK_0,      toggletag,            {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      toggletag,      {.ui = ~0 } },
 	//window,        MOD + Shift + 0,                  toggle show on every tag
     { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
     //screen,        MOD + , ,                         focus previous monitor
@@ -201,7 +202,9 @@ static Key keys[] = {
 
 	/*TAGKEYS(                        XK_9,                      8)*/
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("/home/mia/.config/.system/sysmenu") },
-	//system,        MOD + Shift + Escape,             system menu
+	//system,        MOD + Shift + Escape,             power menu
+	{ MODKEY|ShiftMask,             XK_r,      quit,     	   {1} },
+	//system,        MOD + Shift + r,                  restart dwm
 	{ ControlMask|ShiftMask,        XK_Escape, quit,     	   {0} },
 	//system,        Control + Shift + Escape,         logout/quit dwm
 };

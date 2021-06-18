@@ -5,3 +5,4 @@ config.h
 *.bak
 *.orig
 keybindings.txt
+appliedpatches.txt
