@@ -74,7 +74,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F1,     spawn,          {.v = youtubeCMD } },
 	//app,           MOD + F1,                         Youtube
 	{ MODKEY,                       XK_F2,     spawn,          {.v = fileExplorerCMD } },
-	//utility,       MOD + F2,                         Pcmanfm file browser
+	//app,           MOD + F2,                         Pcmanfm file browser
 	{ MODKEY,                       XK_F3,     spawn,          SHCMD("/home/mia/Security/autovpn") },
 	//system,        MOD + F3,                         EWU VPN
 	{ MODKEY,                       XK_F4,     spawn,          {.v = discordCMD } },
@@ -205,8 +205,8 @@ static Key keys[] = {
 	//system,        MOD + Shift + Escape,             power menu
 	{ MODKEY|ShiftMask,             XK_r,      quit,     	   {1} },
 	//system,        MOD + Shift + r,                  restart dwm
-	{ ControlMask|ShiftMask,        XK_Escape, quit,     	   {0} },
-	//system,        Control + Shift + Escape,         logout/quit dwm
+	/* { ControlMask|ShiftMask,        XK_Escape, quit,     	   {0} }, */
+	/* //system,        Control + Shift + Escape,         logout/quit dwm */
 };
 
 /* button definitions */
