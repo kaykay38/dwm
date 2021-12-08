@@ -124,36 +124,36 @@ static Key keys[] = {
 	//appearance,    MOD + b,                          toggle bar
 	{ MODKEY|ALT,              		XK_h,      shiftviewtag,   {.i = -1 } },
 	//tag,           MOD + Alt + h,                    next tag
-	{ MODKEY|ALT,              		XK_l,      shiftviewtag,   {.i = +1 } },
-	//tag,           MOD + Alt + l,                    previous tag
-	/* { MODKEY,                       XK_j,      focusstack,  {.i = +1 } }, */
+	{ MODKEY|ALT,              		XK_i,      shiftviewtag,   {.i = +1 } },
+	//tag,           MOD + Alt + i,                    previous tag
+	/* { MODKEY,                       XK_n,      focusstack,  {.i = +1 } }, */
 	/* //window,        MOD + j,                          focus next visible window */
-	/* { MODKEY,                       XK_k,      focusstack,  {.i = -1 } }, */
+	/* { MODKEY,                       XK_e,      focusstack,  {.i = -1 } }, */
 	/* //window,        MOD + k,                          focus previous visible window */
-	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
-	//window,        MOD + j,                          focus next visible window
-	{ MODKEY,                       XK_k,      focusstackvis,  {.i = -1 } },
-	//window,        MOD + k,                          focus previous visible window
-	{ MODKEY|ALT,                   XK_j,      focusstackhid,  {.i = +1 } },
-	//window,        MOD + Alt + j,                    focus next hidden window
-	{ MODKEY|ALT,              		XK_k,      focusstackhid,  {.i = -1 } },
-	//window,        MOD + Alt + k,                    focus previous hidden window
-	{ MODKEY|ShiftMask,             XK_n,      show,           {0} },
-	//window,        MOD + Shift + n,                  show hidden window
-	{ MODKEY,                       XK_n,      hide,           {0} },
-	//window,        MOD + n,                          hidden window
-   	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-	//window,        MOD + Shift + j,                  move window up stack
-	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	//window,        MOD + Shift + k,                  move window down stack
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	//layout,        MOD + i,                          increase master stack
+	{ MODKEY,                       XK_n,      focusstackvis,  {.i = +1 } },
+	//window,        MOD + n,                          focus next visible window
+	{ MODKEY,                       XK_e,      focusstackvis,  {.i = -1 } },
+	//window,        MOD + e,                          focus previous visible window
+	{ MODKEY|ALT,                   XK_n,      focusstackhid,  {.i = +1 } },
+	//window,        MOD + Alt + n,                    focus next hidden window
+	{ MODKEY|ALT,              		XK_e,      focusstackhid,  {.i = -1 } },
+	//window,        MOD + Alt + e,                    focus previous hidden window
+	{ MODKEY|ShiftMask,             XK_k,      show,           {0} },
+	//window,        MOD + Shift + k,                  show hidden window
+	{ MODKEY,                       XK_k,      hide,           {0} },
+	//window,        MOD + k,                          hidden window
+   	{ MODKEY|ShiftMask,             XK_n,      movestack,      {.i = +1 } },
+	//window,        MOD + Shift + n,                  move window up stack
+	{ MODKEY|ShiftMask,             XK_e,      movestack,      {.i = -1 } },
+	//window,        MOD + Shift + e,                  move window down stack
+	{ MODKEY,                       XK_D,      incnmaster,     {.i = +1 } },
+	//layout,        MOD + Shift + d,                          increase master stack
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	//layout,        MOD + d,                          decrease master stack
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	//window,        MOD + h,                          decrease window width
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	//window,        MOD + l,                          increase window width
+	{ MODKEY,                       XK_i,      setmfact,       {.f = +0.05} },
+	//window,        MOD + i,                          increase window width
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	//window,        MOD + Shift + Enter,              move to master stack
 	{ MODKEY,                       XK_Tab,    view,           {0} },
